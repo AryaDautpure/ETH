@@ -1,0 +1,33 @@
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.22;
+
+contract MyToken {
+
+    string public TokenName = "Arya";
+    string public TokenAbbr = "AR";
+    uint public TotalSupply = 0;
+    mapping(address => uint) public balance;
+
+    // Mint function
+    function mint(address _address, uint _values) public {
+        TotalSupply += _values;
+        balance[_address] += _values;
+    }
+
+    // Burn function
+    function burn(address _address, uint _values) public {
+        if (balance[_address] >= _values) {
+            TotalSupply -= _values;
+            balance[_address] -= _values;
+        }
+    }
+
+    // Transfer function
+    function transfer(address _to, uint _values) public {
+        require(balance[msg.sender] >= _values, "Insufficient balance");
+        balance[msg.sender] -= _values;
+        balance[_to] += _values;
+    }
+}
+
