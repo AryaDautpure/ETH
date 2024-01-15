@@ -2,7 +2,7 @@
 Simple overview of use/purpose.
 
 ## Description
-Basic smmart contract on solidity
+Basic smart contract on solidity
 
 ## Getting Started
 
